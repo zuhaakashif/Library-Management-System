@@ -1,0 +1,101 @@
+from abc import ABC, abstractmethod
+List=["Creation Date is: "+'15',"Book Title: "+'travel',"Book Author: "+'james',"Book Subject: "+'sure',"Book Publish Date:"+'12']
+
+
+stored_card='Ali'
+stored_code='456'
+
+
+class must(ABC):
+  @abstractmethod
+  def LibraryCard(self):
+    pass
+
+class Library():
+  def __init__(self,name,address):
+    self.name=name
+    self.address=address
+
+
+
+class Catalog(Library):
+  def __init__(self):
+    total_books=eval(input("Enter the total number of books: "))
+    for i in range(total_books):
+      creation_date=input("Enter the Date: ")
+      book_title=input("Enter book title: ")
+      book_author=input("Enter Author's Name: ")
+      book_subject=input("Enter Subject: ")
+      book_publish=input("Enter the date to publish: ")
+      book1=["Creation Date is: "+creation_date,"Book Title: "+book_title,"Book Author: "+book_author,"Book Subject: "+book_subject,"Book Publish Date:"+book_publish]
+      print(book1)
+      List.append(book1)
+
+class Book(Catalog):
+  def __init__(self):
+    print(List)
+
+
+class Fine():
+  def fine_inquiry(self):
+    fine_amount=12000
+    fine_input=int(input("Enter the Fine Payment: "))
+    print("You've a pending fine of ",fine_amount)
+    if fine_input==fine_amount:
+      print("You've Paid the fine!")
+
+    elif fine_input<fine_amount:
+      print("You've Paid less amount!")
+
+class Account(Library):
+  def __init__(self):
+    self._stored_id='Kumail'
+    self._stored_pass='123'
+    try:
+      member=int(input("Press 1 if you're a general member and press 2 if you're a librarian: "))
+
+    except:
+      print("Input should be of 'int' type")
+      
+    if member==1:
+      create_account=input("Press 1 if you want to create an account or 2 to login or 3 for fine inquiry: ")
+      if create_account=="1":
+        id=input("Enter id: ")
+        password= input("Enter password: ")
+        print("Account created. Info Stored")
+      elif create_account=="2":
+        id=input("Enter id: ")
+        password= input("Enter password: ")
+        if id == self._stored_id and password == self._stored_pass:
+          print("you've logged in")
+
+      elif create_account=="3":
+        fine=Fine()
+        fine.fine_inquiry()
+
+
+    elif member==2:
+      enter=input("Enter 1 if you want to add books or enter 2 if you want to access books: ")
+      if enter=="1":
+        catalog=Catalog()
+
+      elif enter=="2":
+        book=Book()
+
+
+class Card(must):
+  def LibraryCard(self):
+    self.card_number=123
+    self.barcode=456
+    self.issued_date='31 August'
+    return
+
+    
+
+
+
+
+
+account=Account()
+card=Card()
+card.LibraryCard()
